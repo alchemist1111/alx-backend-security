@@ -135,6 +135,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# --- Default rate limiting configurations (requests per minute) ---
+RATELIMITS = {
+    'default': '5/m',  # 5 requests per minute (for anonymous users)
+    'authenticated': '10/m',  # 10 requests per minute (for authenticated users)
+}
+
+# --- Geolocation API Key config ---
+IPGEOLOCATION_API_KEY = os.getenv('IPGEOLOCATION_API_KEY')
 
 # Redis Cache Setting
 CACHES = {
